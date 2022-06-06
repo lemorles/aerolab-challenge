@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Filter from '../components/Filter';
 import Hero from '../components/Hero';
+import Pagination from '../components/Pagination';
 import ProductList from '../components/ProductList';
 
 export default function Home({ products, user }) {
@@ -42,6 +43,13 @@ export default function Home({ products, user }) {
       <Container>
         <ProductList products={paginate(sort(products))} user={user} />
       </Container>
+
+      <Pagination
+        count={products.length}
+        totalPages={Math.ceil(products.length / 16) - 1}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </ContainerHome>
   );
 }

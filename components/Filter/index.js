@@ -9,43 +9,44 @@ export default function Filter({
   };
 
   return (
-    <FilterContainer>
-      <Container>
-        <ProductsNumber>
-          {count / (totalPages + 1)}
-          {' '}
-          of
-          {' '}
-          {count}
-          {' '}
-          products
-        </ProductsNumber>
-        <Divider />
-        <FilterTitle>
-          Sort by:
-        </FilterTitle>
-        <FilterList>
-          <FilterItem
-            onClick={() => handleFilter('Most recent')}
-            className={filter === 'Most recent' ? 'active' : ''}
-          >
-            <Button>Most recent</Button>
-          </FilterItem>
-          <FilterItem
-            onClick={() => handleFilter('Lowest price')}
-            className={filter === 'Lowest price' ? 'active' : ''}
-          >
-            <Button>Lowest price</Button>
-          </FilterItem>
-          <FilterItem
-            onClick={() => handleFilter('Highest price')}
-            className={filter === 'Highest price' ? 'active' : ''}
-          >
-            <Button>Highest price</Button>
-          </FilterItem>
-        </FilterList>
-      </Container>
-      {
+    <Wrapper>
+      <FilterContainer>
+        <Container>
+          <ProductsNumber>
+            {count / (totalPages + 1)}
+            {' '}
+            of
+            {' '}
+            {count}
+            {' '}
+            products
+          </ProductsNumber>
+          <Divider vertical />
+          <FilterTitle>
+            Sort by:
+          </FilterTitle>
+          <FilterList>
+            <FilterItem
+              onClick={() => handleFilter('Most recent')}
+              className={filter === 'Most recent' ? 'active' : ''}
+            >
+              <Button>Most recent</Button>
+            </FilterItem>
+            <FilterItem
+              onClick={() => handleFilter('Lowest price')}
+              className={filter === 'Lowest price' ? 'active' : ''}
+            >
+              <Button>Lowest price</Button>
+            </FilterItem>
+            <FilterItem
+              onClick={() => handleFilter('Highest price')}
+              className={filter === 'Highest price' ? 'active' : ''}
+            >
+              <Button>Highest price</Button>
+            </FilterItem>
+          </FilterList>
+        </Container>
+        {
         currentPage >= totalPages ? (
           <IconNext onClick={() => setCurrentPage(currentPage - 1)}>
             <img src="/assets/icons/arrow-left.svg" alt="previus" />
@@ -58,15 +59,20 @@ export default function Filter({
           )
       }
 
-    </FilterContainer>
+      </FilterContainer>
+      <Divider />
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  padding: 6.5rem 13.2rem 6.7rem;
+`;
 
 const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6.5rem 13.2rem 6.7rem;
 `;
 
 const Container = styled.div`
@@ -126,7 +132,8 @@ const IconNext = styled.div`
 
 const Divider = styled.hr`
   background: #d9d9d9;
-  opacity: .7;
-  width: .1rem;
-  height: 4.9rem;
+  opacity: .5;
+  ${(props) => (props.vertical ? 'width: .1rem;' : '')}; 
+  ${(props) => (props.vertical ? 'height: 4.9rem' : '')};
+  ${(props) => (props.vertical ? '' : 'margin-top: 2.4rem')};  
 `;
