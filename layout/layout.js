@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Navigation from '../components/Navigation';
 
-export default function Layout({ children }) {
+export default function Layout({ children, ...rest }) {
   return (
     <>
-      <Navigation />
+      <Navigation user={rest?.user} />
       <MainContainer>{children}</MainContainer>
     </>
   );
