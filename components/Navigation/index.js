@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-export default function Navigation() {
+export default function Navigation({ user }) {
   return (
     <Header>
       <Nav>
         <img src="/assets/aerolab-logo.svg" alt="logo aerolab" />
         <UserList>
-          <ItemList>John Kite</ItemList>
+          <ItemList>{user?.name}</ItemList>
           <ItemList coin>
-            <p>6000</p>
+            <p>{user?.points}</p>
             <img src="/assets/icons/coin.svg" alt="coin" />
           </ItemList>
         </UserList>

@@ -20,6 +20,7 @@
     ],
     "rules": {
         "no-restricted-exports": "off",
+        "no-underscore-dangle":"off",
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
         "react/jsx-filename-extension": "off",
